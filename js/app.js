@@ -1,5 +1,6 @@
 
 
+
 // app.js — Login + Dashboard + Router (Firebase) + Animaciones
 // ================================================
 
@@ -115,7 +116,6 @@ if (document.getElementById("loginForm")) {
                     SESION.setJSON("hijos", hijos);
                 }
 
-                SESION.persistSession();
                 window.location.href = "dashboard.html";
             } else {
                 error.textContent = "❌ Usuario o contraseña incorrectos";
@@ -136,10 +136,6 @@ if (document.getElementById("menu")) {
 }
 
 async function initDashboard() {
-    if (!SESION.hasActiveSession()) {
-        SESION.restorePersistedSession();
-    }
-
     const rol     = SESION.get("rol");
     const usuario = SESION.get("usuario");
 
@@ -284,6 +280,7 @@ function cerrarSesion() {
 window.cerrarSesion = cerrarSesion;
 window.animarEntrada = animarEntrada;
 window.animarEntradaUnica = animarEntradaUnica;
+
 
 
 
